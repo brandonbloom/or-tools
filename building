@@ -2,6 +2,7 @@
 # export PATH="/usr/local/opt/swig@3/bin:$PATH"
 
 PYTHONPATH=. python3 examples/python/transit_time.py
+PYTHONPATH=. python3 examples/python/linear_programming.py
 
 
 
