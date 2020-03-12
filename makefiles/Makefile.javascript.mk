@@ -10,10 +10,14 @@ else
 	@echo
 endif
 
-OR_TOOLS_NODE_PATH = $(OR_ROOT_FULL)$(CPSEP)$(OR_ROOT_FULL)$Sdependencies$Ssources$Sprotobuf-$(PROTOBUF_TAG)$Spython
+GYP_OUT_DIR = build/Release
+
+SWIG_JAVASCRIPT_ENGINE = node
+OR_TOOLS_NODE_PATH = $(GYP_OUT_DIR)$(CPSEP)$(LIB_DIR)$(CPSEP)$(OR_ROOT_FULL)$Sdependencies$Ssources$Sprotobuf-$(PROTOBUF_TAG)$Spython
 
 # Check for required build tools
 JAVASCRIPT_COMPILER ?= node
+NODE_GYP ?= node-gyp
 ifeq ($(SYSTEM),win)
 ifneq ($(WINDOWS_PATH_TO_JAVASCRIPT),)
 JAVASCRIPT_EXECUTABLE := $(WINDOWS_PATH_TO_JAVASCRIPT)\$(JAVASCRIPT_COMPILER)
@@ -30,26 +34,26 @@ endif
 # XXX PYALGORITHMS_LIBS = $(LIB_DIR)/_pywrapknapsack_solver.$(SWIG_PYTHON_LIB_SUFFIX)
 # XXX PYGRAPH_LIBS = $(LIB_DIR)/_pywrapgraph.$(SWIG_PYTHON_LIB_SUFFIX)
 # XXX PYCP_LIBS = $(LIB_DIR)/_pywrapcp.$(SWIG_PYTHON_LIB_SUFFIX)
-# XXX PYLP_LIBS = $(LIB_DIR)/_pywraplp.$(SWIG_PYTHON_LIB_SUFFIX)
+JSLP_LIBS = $(GYP_OUT_DIR)/ortools/linear_solver.node
 # XXX PYSAT_LIBS = $(LIB_DIR)/_pywrapsat.$(SWIG_PYTHON_LIB_SUFFIX)
 # XXX PYDATA_LIBS = $(LIB_DIR)/_pywraprcpsp.$(SWIG_PYTHON_LIB_SUFFIX)
 # XXX PYSORTED_INTERVAL_LIST_LIBS = $(LIB_DIR)/_sorted_interval_list.$(SWIG_PYTHON_LIB_SUFFIX)
-# XXX PYTHON_OR_TOOLS_LIBS = \
-# XXX  $(GEN_DIR)/ortools/__init__.py \
-# XXX  $(PYALGORITHMS_LIBS) \
-# XXX  $(PYGRAPH_LIBS) \
-# XXX  $(PYCP_LIBS) \
-# XXX  $(PYLP_LIBS) \
-# XXX  $(PYSAT_LIBS) \
-# XXX  $(PYDATA_LIBS) \
-# XXX  $(PYSORTED_INTERVAL_LIST_LIBS)
+JAVASCRIPT_OR_TOOLS_LIBS = \
+ $(GEN_DIR)/ortools/index.js \
+ $(JSALGORITHMS_LIBS) \
+ $(JSGRAPH_LIBS) \
+ $(JSCP_LIBS) \
+ $(JSLP_LIBS) \
+ $(JSSAT_LIBS) \
+ $(JSDATA_LIBS) \
+ $(JSSORTED_INTERVAL_LIST_LIBS)
 
 # Main target
 .PHONY: javascript # Build JavaScript OR-Tools.
 .PHONY: check_javascript # Quick check only running JavaScript OR-Tools samples.
 .PHONY: test_javascript # Run all JavaScript OR-Tools test targets.
 ifneq ($(JAVASCRIPT_EXECUTABLE),)
-javascript: $(PYTHON_OR_TOOLS_LIBS)
+javascript: $(JAVASCRIPT_OR_TOOLS_LIBS)
 check_javascript: check_javascript_pimpl
 test_javascript: test_javascript_pimpl
 BUILT_LANGUAGES +=, JavaScript
@@ -82,8 +86,8 @@ endif
 # XXX  "$(PYTHON_EXECUTABLE)" setup.py build
 # XXX endif
 # XXX 
-# XXX $(GEN_DIR)/ortools/__init__.py: | $(GEN_DIR)/ortools
-# XXX 	$(COPY) ortools$S__init__.py $(GEN_PATH)$Sortools$S__init__.py
+$(GEN_DIR)/ortools/index.js: | $(GEN_DIR)/ortools
+	$(COPY) ortools$Sindex.js $(GEN_PATH)$Sortools$Sindex.js
 # XXX 
 # XXX #######################
 # XXX ##  Python Wrappers  ##
@@ -274,12 +278,12 @@ endif
 # XXX else
 # XXX 	cp $(PYCP_LIBS) $(GEN_PATH)/ortools/constraint_solver
 # XXX endif
-# XXX 
-# XXX # pywraplp
-# XXX ifeq ($(PLATFORM),MACOSX)
-# XXX PYLP_LDFLAGS = -install_name @rpath/_pywraplp.$(SWIG_PYTHON_LIB_SUFFIX) #
-# XXX endif
-# XXX 
+
+# jswraplp
+ifeq ($(PLATFORM),MACOSX)
+JSLP_LDFLAGS = -install_name @rpath/_jswraplp.node
+endif
+
 # XXX $(GEN_DIR)/ortools/util/optional_boolean_pb2.py: \
 # XXX  $(SRC_DIR)/ortools/util/optional_boolean.proto \
 # XXX  $(PROTOBUF_PYTHON_DESC) \
@@ -294,7 +298,7 @@ endif
 # XXX  | $(GEN_DIR)/ortools/linear_solver
 # XXX 	$(PROTOC) --proto_path=$(INC_DIR) --python_out=$(GEN_PATH) $(MYPY_OUT) \
 # XXX  $(SRC_DIR)/ortools/linear_solver/linear_solver.proto
-# XXX 
+
 # XXX $(GEN_DIR)/ortools/linear_solver/pywraplp.py: \
 # XXX  $(SRC_DIR)/ortools/base/base.i \
 # XXX  $(SRC_DIR)/ortools/util/python/vector.i \
@@ -308,33 +312,34 @@ endif
 # XXX  -o $(GEN_PATH)$Sortools$Slinear_solver$Slinear_solver_python_wrap.cc \
 # XXX  -module pywraplp \
 # XXX  $(SRC_DIR)/ortools/linear_solver$Spython$Slinear_solver.i
-# XXX 
-# XXX $(GEN_DIR)/ortools/linear_solver/linear_solver_python_wrap.cc: \
-# XXX  $(GEN_DIR)/ortools/linear_solver/pywraplp.py
-# XXX 
-# XXX $(OBJ_DIR)/swig/linear_solver_python_wrap.$O: \
-# XXX  $(GEN_DIR)/ortools/linear_solver/linear_solver_python_wrap.cc \
-# XXX  $(LP_DEPS) \
-# XXX  | $(OBJ_DIR)/swig
-# XXX 	$(CCC) $(CFLAGS) $(PYTHON_INC) $(PYTHON3_CFLAGS) \
-# XXX  -c $(GEN_PATH)$Sortools$Slinear_solver$Slinear_solver_python_wrap.cc \
-# XXX  $(OBJ_OUT)$(OBJ_DIR)$Sswig$Slinear_solver_python_wrap.$O
-# XXX 
-# XXX $(PYLP_LIBS): $(OBJ_DIR)/swig/linear_solver_python_wrap.$O $(OR_TOOLS_LIBS)
-# XXX 	$(DYNAMIC_LD) \
-# XXX  $(PYLP_LDFLAGS) \
-# XXX  $(LD_OUT)$(LIB_DIR)$S_pywraplp.$(SWIG_PYTHON_LIB_SUFFIX) \
-# XXX  $(OBJ_DIR)$Sswig$Slinear_solver_python_wrap.$O \
-# XXX  $(OR_TOOLS_LNK) \
-# XXX  $(SYS_LNK) \
-# XXX  $(PYTHON_LNK) \
-# XXX  $(PYTHON_LDFLAGS)
-# XXX ifeq ($(SYSTEM),win)
-# XXX 	copy $(LIB_DIR)$S_pywraplp.$(SWIG_PYTHON_LIB_SUFFIX) $(GEN_PATH)\\ortools\\linear_solver\\_pywraplp.pyd
-# XXX else
-# XXX 	cp $(PYLP_LIBS) $(GEN_PATH)/ortools/linear_solver
-# XXX endif
-# XXX 
+# ^^^ modeled on
+$(GEN_DIR)/ortools/linear_solver/index.js: \
+ $(SRC_DIR)/ortools/base/base.i \
+ $(SRC_DIR)/ortools/linear_solver/javascript/linear_solver.i \
+ $(SRC_DIR)/ortools/linear_solver/linear_solver.h \
+ $(GEN_DIR)/ortools/linear_solver/linear_solver.pb.h \
+ | $(GEN_DIR)/ortools/linear_solver
+	$(SWIG_BINARY) -v $(SWIG_INC) -I$(INC_DIR) -c++ -javascript -$(SWIG_JAVASCRIPT_ENGINE) \
+ -o $(GEN_PATH)$Sortools$Slinear_solver$Slinear_solver_javascript_wrap.cc \
+ -module jswraplp \
+ $(SRC_DIR)/ortools/linear_solver$Sjavascript$Slinear_solver.i
+
+$(GEN_DIR)/ortools/linear_solver/linear_solver_javascript_wrap.cc: \
+ $(GEN_DIR)/ortools/linear_solver/index.js
+
+$(OBJ_DIR)/swig/linear_solver_javascript_wrap.$O: \
+	$(CCC) $(CFLAGS) $(JAVASCRIPT_INC) \
+ -c $(GEN_PATH)$Sortools$Slinear_solver$Slinear_solver_javascript_wrap.cc \
+ $(OBJ_OUT)$(OBJ_DIR)$Sswig$Slinear_solver_javascript_wrap.$O
+
+$(JSLP_LIBS): \
+ $(OBJ_DIR)/swig/linear_solver_python_wrap.$O \
+ $(OR_TOOLS_LIBS) \
+ $(GEN_DIR)/ortools/linear_solver/linear_solver_javascript_wrap.cc \
+ $(LP_DEPS) \
+ | $(OBJ_DIR)/swig
+	$(NODE_GYP) configure build linear_solver
+
 # XXX # pywrapsat
 # XXX ifeq ($(PLATFORM),MACOSX)
 # XXX PYSAT_LDFLAGS = -install_name @rpath/_pywrapsat.$(SWIG_PYTHON_LIB_SUFFIX) #
@@ -489,53 +494,29 @@ endif
 # XXX else
 # XXX 	cp $(PYSORTED_INTERVAL_LIST_LIBS) $(GEN_PATH)/ortools/util
 # XXX endif
-# XXX 
-# XXX #######################
-# XXX ##  Python SOURCE  ##
-# XXX #######################
-# XXX ifeq ($(SOURCE_SUFFIX),.py) # Those rules will be used if SOURCE contains a .py file
-# XXX .PHONY: build # Build a Python program.
-# XXX build: $(SOURCE) $(PYTHON_OR_TOOLS_LIBS) ;
-# XXX 
-# XXX .PHONY: run # Run a Python program.
-# XXX run: build
-# XXX 	$(SET_PYTHONPATH) "$(PYTHON_EXECUTABLE)" $(SOURCE_PATH) $(ARGS)
-# XXX endif
-# XXX 
-# XXX ###############################
-# XXX ##  Python Examples/Samples  ##
-# XXX ###############################
-# XXX rpy_%: $(TEST_DIR)/%.py $(PYTHON_OR_TOOLS_LIBS) FORCE
-# XXX 	$(SET_PYTHONPATH) "$(PYTHON_EXECUTABLE)" $(TEST_PATH)$S$*.py $(ARGS)
-# XXX 
-# XXX rpy_%: $(PYTHON_EX_DIR)/%.py $(PYTHON_OR_TOOLS_LIBS) FORCE
-# XXX 	$(SET_PYTHONPATH) "$(PYTHON_EXECUTABLE)" $(PYTHON_EX_PATH)$S$*.py $(ARGS)
-# XXX 
-# XXX rpy_%: $(CONTRIB_EX_DIR)/%.py $(PYTHON_OR_TOOLS_LIBS) FORCE
-# XXX 	$(SET_PYTHONPATH) "$(PYTHON_EXECUTABLE)" $(CONTRIB_EX_PATH)$S$*.py $(ARGS)
-# XXX 
-# XXX rpy_%: ortools/algorithms/samples/%.py $(PYTHON_OR_TOOLS_LIBS) FORCE
-# XXX 	$(SET_PYTHONPATH) "$(PYTHON_EXECUTABLE)" ortools$Salgorithms$Ssamples$S$*.py $(ARGS)
-# XXX 
-# XXX rpy_%: ortools/constraint_solver/samples/%.py $(PYTHON_OR_TOOLS_LIBS) FORCE
-# XXX 	$(SET_PYTHONPATH) "$(PYTHON_EXECUTABLE)" ortools$Sconstraint_solver$Ssamples$S$*.py $(ARGS)
-# XXX 
-# XXX rpy_%: ortools/graph/samples/%.py $(PYTHON_OR_TOOLS_LIBS) FORCE
-# XXX 	$(SET_PYTHONPATH) "$(PYTHON_EXECUTABLE)" ortools$Sgraph$Ssamples$S$*.py $(ARGS)
-# XXX 
-# XXX rpy_%: ortools/linear_solver/samples/%.py $(PYTHON_OR_TOOLS_LIBS) FORCE
-# XXX 	$(SET_PYTHONPATH) "$(PYTHON_EXECUTABLE)" ortools$Slinear_solver$Ssamples$S$*.py $(ARGS)
-# XXX 
-# XXX rpy_%: ortools/sat/samples/%.py $(PYTHON_OR_TOOLS_LIBS) FORCE
-# XXX 	$(SET_PYTHONPATH) "$(PYTHON_EXECUTABLE)" ortools$Ssat$Ssamples$S$*.py $(ARGS)
-# XXX 
-# XXX .PHONY: test_python_algorithms_samples # Run all Python Algorithms Samples (located in ortools/algorithms/samples)
-# XXX test_python_algorithms_samples: \
+
+#######################
+##  JavaScript SOURCE  ##
+#######################
+ifeq ($(SOURCE_SUFFIX),.js) # Those rules will be used if SOURCE contains a .js file
+.PHONY: build # Build a JavaScript program.
+build: $(SOURCE) $(JAVASCRIPT_OR_TOOLS_LIBS) ;
+
+.PHONY: run # Run a Python program.
+run: build
+	$(SET_NODE_PATH) "$(JAVASCRIPT_EXECUTABLE)" $(SOURCE_PATH) $(ARGS)
+endif
+
+###############################
+##  JavaScript Examples/Samples  ##
+###############################
+.PHONY: test_javascript_algorithms_samples # Run all JavaScript Algorithms Samples (located in ortools/algorithms/samples)
+test_javascript_algorithms_samples: \
 # XXX  rpy_knapsack \
 # XXX  rpy_simple_knapsack_program
-# XXX 
-# XXX .PHONY: test_python_constraint_solver_samples # Run all Python CP Samples (located in ortools/constraint_solver/samples)
-# XXX test_python_constraint_solver_samples: \
+
+.PHONY: test_javascript_constraint_solver_samples # Run all JavaScript CP Samples (located in ortools/constraint_solver/samples)
+test_javascript_constraint_solver_samples: \
 # XXX  rpy_simple_cp_program \
 # XXX  rpy_simple_routing_program \
 # XXX  rpy_tsp \
@@ -560,20 +541,20 @@ endif
 # XXX  rpy_cvrp_reload \
 # XXX  rpy_cvrptw \
 # XXX  rpy_cvrptw_break
-# XXX 
-# XXX .PHONY: test_python_graph_samples # Run all Python Graph Samples (located in ortools/graph/samples)
-# XXX test_python_graph_samples: \
+
+.PHONY: test_javascript_graph_samples # Run all JavaScript Graph Samples (located in ortools/graph/samples)
+test_javascript_graph_samples: \
 # XXX  rpy_simple_max_flow_program \
 # XXX  rpy_simple_min_cost_flow_program
-# XXX 
-# XXX .PHONY: test_python_linear_solver_samples # Run all Python LP Samples (located in ortools/linear_solver/samples)
-# XXX test_python_linear_solver_samples: \
+
+.PHONY: test_javascript_linear_solver_samples # Run all JavaScript LP Samples (located in ortools/linear_solver/samples)
+test_javascript_linear_solver_samples: \
 # XXX  rpy_simple_lp_program \
 # XXX  rpy_simple_mip_program \
 # XXX  rpy_linear_programming_example \
 # XXX  rpy_integer_programming_example
-# XXX 
-# XXX .PHONY: test_python_sat_samples # Run all Python Sat Samples (located in ortools/sat/samples)
+
+.PHONY: test_javascript_sat_samples # Run all JavaScript Sat Samples (located in ortools/sat/samples)
 # XXX test_python_sat_samples: \
 # XXX  rpy_binpacking_problem_sat \
 # XXX  rpy_bool_or_sample_sat \
@@ -595,13 +576,13 @@ endif
 # XXX  rpy_solve_with_time_limit_sample_sat \
 # XXX  rpy_step_function_sample_sat \
 # XXX  rpy_stop_after_n_solutions_sample_sat
-# XXX 
-# XXX .PHONY: check_python_pimpl
-# XXX check_python_pimpl: \
-# XXX  test_python_algorithms_samples \
-# XXX  test_python_constraint_solver_samples \
-# XXX  test_python_graph_samples \
-# XXX  test_python_linear_solver_samples \
+
+.PHONY: check_javascript_pimpl
+check_javascript_pimpl: \
+ test_javascript_algorithms_samples \
+ test_javascript_constraint_solver_samples \
+ test_javascript_graph_samples \
+ test_javascript_linear_solver_samples \
 # XXX  test_python_sat_samples \
 # XXX  \
 # XXX  rpy_stigler_diet
@@ -616,9 +597,9 @@ endif
 # XXX # rpy_assignment \
 # XXX # rpy_nurses_cp \
 # XXX # rpy_job_shop_cp \
-# XXX 
-# XXX .PHONY: test_python_tests # Run all Python Tests (located in examples/tests)
-# XXX test_python_tests: \
+
+.PHONY: test_javascript_tests # Run all Python Tests (located in examples/tests)
+test_javascript_tests: \
 # XXX  rpy_lp_test \
 # XXX  rpy_cp_model_test \
 # XXX  rpy_sorted_interval_list_test \
@@ -628,9 +609,9 @@ endif
 # XXX  rpy_pywrapcp_test \
 # XXX  rpy_pywraplp_test \
 # XXX  rpy_pywraprouting_test
-# XXX 
-# XXX .PHONY: test_python_contrib # Run all Python Contrib (located in examples/python and examples/contrib)
-# XXX test_python_contrib: \
+
+.PHONY: test_javascript_contrib # Run all Python Contrib (located in examples/python and examples/contrib)
+ test_javascript_contrib: \
 # XXX  rpy_3_jugs_mip \
 # XXX  rpy_3_jugs_regular \
 # XXX  rpy_alldifferent_except_0 \
@@ -760,49 +741,49 @@ endif
 # XXX #	$(MAKE) rpy_school_scheduling_sat # error: too long
 # XXX #	$(MAKE) rpy_secret_santa # error: too long
 # XXX #	$(MAKE) rpy_word_square # Not working on window since it rely on /usr/share/dict/words
-# XXX 
-# XXX .PHONY: test_python_python # Build and Run all Python Examples (located in ortools/examples/python)
-# XXX test_python_python: \
-# XXX  rpy_appointments \
-# XXX  rpy_assignment_sat \
-# XXX  rpy_assignment_with_constraints_sat \
-# XXX  rpy_balance_group_sat \
-# XXX  rpy_chemical_balance_lp \
-# XXX  rpy_chemical_balance_sat \
-# XXX  rpy_flexible_job_shop_sat \
-# XXX  rpy_gate_scheduling_sat \
-# XXX  rpy_golomb8 \
-# XXX  rpy_hidato_sat \
-# XXX  rpy_integer_programming \
-# XXX  rpy_jobshop_ft06_distance_sat \
-# XXX  rpy_jobshop_ft06_sat \
-# XXX  rpy_jobshop_with_maintenance_sat \
-# XXX  rpy_linear_assignment_api \
-# XXX  rpy_linear_programming \
-# XXX  rpy_magic_sequence_distribute \
-# XXX  rpy_nqueens_sat \
-# XXX  rpy_pyflow_example \
-# XXX  rpy_reallocate_sat \
-# XXX  rpy_rcpsp_sat \
-# XXX  rpy_single_machine_scheduling_with_setup_release_due_dates_sat \
-# XXX  rpy_steel_mill_slab_sat \
-# XXX  rpy_stigler_diet \
-# XXX  rpy_sudoku_sat \
-# XXX  rpy_tasks_and_workers_assignment_sat \
-# XXX  rpy_transit_time \
-# XXX  rpy_vendor_scheduling_sat \
-# XXX  rpy_wedding_optimal_chart_sat \
-# XXX  rpy_worker_schedule_sat \
-# XXX  rpy_zebra_sat
-# XXX 	$(MAKE) run SOURCE=examples/python/shift_scheduling_sat.py ARGS="--params max_time_in_seconds:10.0" \
-# XXX 
-# XXX 
-# XXX .PHONY: test_python_pimpl
-# XXX test_python_pimpl: \
-# XXX  check_python_pimpl \
-# XXX  test_python_tests \
-# XXX  test_python_contrib \
-# XXX  test_python_python
+
+.PHONY: test_javascript_javascript # Build and Run all JavaScript Examples (located in ortools/examples/python)
+test_javascript_javascript:
+	# $(MAKE) run SOURCE= XXX rpy_appointments
+	# $(MAKE) run SOURCE= XXX rpy_assignment_sat
+	# $(MAKE) run SOURCE= XXX rpy_assignment_with_constraints_sat
+	# $(MAKE) run SOURCE= XXX rpy_balance_group_sat
+	# $(MAKE) run SOURCE= XXX rpy_chemical_balance_lp
+	# $(MAKE) run SOURCE= XXX rpy_chemical_balance_sat
+	# $(MAKE) run SOURCE= XXX rpy_flexible_job_shop_sat
+	# $(MAKE) run SOURCE= XXX rpy_gate_scheduling_sat
+	# $(MAKE) run SOURCE= XXX rpy_golomb8
+	# $(MAKE) run SOURCE= XXX rpy_hidato_sat
+	# $(MAKE) run SOURCE= XXX rpy_integer_programming
+	# $(MAKE) run SOURCE= XXX rpy_jobshop_ft06_distance_sat
+	# $(MAKE) run SOURCE= XXX rpy_jobshop_ft06_sat
+	# $(MAKE) run SOURCE= XXX rpy_jobshop_with_maintenance_sat
+	# $(MAKE) run SOURCE= XXX rpy_linear_assignment_api
+	$(MAKE) run SOURCE=examples/javascript/linear-programming.js
+	# $(MAKE) run SOURCE= XXX rpy_magic_sequence_distribute
+	# $(MAKE) run SOURCE= XXX rpy_nqueens_sat
+	# $(MAKE) run SOURCE= XXX rpy_pyflow_example
+	# $(MAKE) run SOURCE= XXX rpy_reallocate_sat
+	# $(MAKE) run SOURCE= XXX rpy_rcpsp_sat
+	# $(MAKE) run SOURCE= XXX rpy_single_machine_scheduling_with_setup_release_due_dates_sat
+	# $(MAKE) run SOURCE= XXX rpy_steel_mill_slab_sat
+	# $(MAKE) run SOURCE= XXX rpy_stigler_diet
+	# $(MAKE) run SOURCE= XXX rpy_sudoku_sat
+	# $(MAKE) run SOURCE= XXX rpy_tasks_and_workers_assignment_sat
+	# $(MAKE) run SOURCE= XXX rpy_transit_time
+	# $(MAKE) run SOURCE= XXX rpy_vendor_scheduling_sat
+	# $(MAKE) run SOURCE= XXX rpy_wedding_optimal_chart_sat
+	# $(MAKE) run SOURCE= XXX rpy_worker_schedule_sat
+	# $(MAKE) run SOURCE= XXX rpy_zebra_sat
+# XXX 	$(MAKE) run SOURCE=examples/python/shift_scheduling_sat.py ARGS="--params max_time_in_seconds:10.0"
+
+
+.PHONY: test_javascript_pimpl
+test_javascript_pimpl: \
+ check_javascript_pimpl \
+ test_javascript_tests \
+ test_javascript_contrib \
+ test_javascript_javascript
 
 ################
 ##  Cleaning  ##
@@ -1172,7 +1153,6 @@ endif
 	@echo PYTHON_LDFLAGS = $(PYTHON_LDFLAGS)
 	@echo SWIG_BINARY = $(SWIG_BINARY)
 	@echo SWIG_INC = $(SWIG_INC)
-	@echo SWIG_PYTHON_LIB_SUFFIX = $(SWIG_PYTHON_LIB_SUFFIX)
 	@echo SWIG_PY_DOXYGEN = $(SWIG_PY_DOXYGEN)
 	@echo SET_NODE_PATH = "$(SET_NODE_PATH)"
 ifeq ($(SYSTEM),win)

@@ -1,0 +1,14 @@
+# For swig3 - don't need this?
+# export PATH="/usr/local/opt/swig@3/bin:$PATH"
+
+PYTHONPATH=. python3 examples/python/transit_time.py
+
+
+
+nvm use v10.15.0
+npm install -g node-gyp
+
+
+
+# To see paths that libraries will load from:
+otool -l build/Release/linear_solver.node
