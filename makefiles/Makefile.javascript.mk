@@ -511,71 +511,70 @@ endif
 ##  JavaScript Examples/Samples  ##
 ###############################
 .PHONY: test_javascript_algorithms_samples # Run all JavaScript Algorithms Samples (located in ortools/algorithms/samples)
-test_javascript_algorithms_samples: \
-# XXX  rpy_knapsack \
-# XXX  rpy_simple_knapsack_program
+test_javascript_algorithms_samples:
+	# TODO $(MAKE) run SOURCE=ortools/algorithms/samples/knapsack.js
+	# TODO $(MAKE) run SOURCE=ortools/algorithms/samples/simple_knapsack_program.js
 
 .PHONY: test_javascript_constraint_solver_samples # Run all JavaScript CP Samples (located in ortools/constraint_solver/samples)
-test_javascript_constraint_solver_samples: \
-# XXX  rpy_simple_cp_program \
-# XXX  rpy_simple_routing_program \
-# XXX  rpy_tsp \
-# XXX  rpy_tsp_cities \
-# XXX  rpy_tsp_circuit_board \
-# XXX  rpy_tsp_distance_matrix \
-# XXX  rpy_vrp \
-# XXX  rpy_vrp_capacity \
-# XXX  rpy_vrp_drop_nodes \
-# XXX  rpy_vrp_global_span \
-# XXX  rpy_vrp_initial_routes \
-# XXX  rpy_vrp_pickup_delivery \
-# XXX  rpy_vrp_pickup_delivery_fifo \
-# XXX  rpy_vrp_pickup_delivery_lifo \
-# XXX  rpy_vrp_resources \
-# XXX  rpy_vrp_starts_ends \
-# XXX  rpy_vrp_time_windows \
-# XXX  rpy_vrp_with_time_limit \
-# XXX  \
-# XXX  rpy_vrpgs \
-# XXX  rpy_cvrp \
-# XXX  rpy_cvrp_reload \
-# XXX  rpy_cvrptw \
-# XXX  rpy_cvrptw_break
+test_javascript_constraint_solver_samples:
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/simple_cp_program.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/simple_routing_program.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/tsp.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/tsp_cities.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/tsp_circuit_board.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/tsp_distance_matrix.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/vrp.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/vrp_capacity.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/vrp_drop_nodes.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/vrp_global_span.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/vrp_initial_routes.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/vrp_pickup_delivery.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/vrp_pickup_delivery_fifo.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/vrp_pickup_delivery_lifo.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/vrp_resources.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/vrp_starts_ends.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/vrp_time_windows.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/vrp_with_time_limit.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/vrpgs.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/cvrp.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/cvrp_reload.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/cvrptw.js
+	# TODO $(MAKE) run SOURCE=ortools/constraint_solver/samples/cvrptw_break.js
 
 .PHONY: test_javascript_graph_samples # Run all JavaScript Graph Samples (located in ortools/graph/samples)
-test_javascript_graph_samples: \
-# XXX  rpy_simple_max_flow_program \
-# XXX  rpy_simple_min_cost_flow_program
+test_javascript_graph_samples:
+	# TODO $(MAKE) run SOURCE=ortools/graph/samples/simple_max_flow_program.js
+	# TODO $(MAKE) run SOURCE=ortools/graph/samples/simple_min_cost_flow_program.js
 
 .PHONY: test_javascript_linear_solver_samples # Run all JavaScript LP Samples (located in ortools/linear_solver/samples)
-test_javascript_linear_solver_samples: \
-# XXX  rpy_simple_lp_program \
-# XXX  rpy_simple_mip_program \
-# XXX  rpy_linear_programming_example \
-# XXX  rpy_integer_programming_example
+test_javascript_linear_solver_samples:
+	# TODO $(MAKE) run SOURCE=ortools/linear_solver/samples/simple_lp_program.js
+	# TODO $(MAKE) run SOURCE=ortools/linear_solver/samples/simple_mip_program.js
+	# TODO $(MAKE) run SOURCE=ortools/linear_solver/samples/linear_programming_example.js
+	# TODO $(MAKE) run SOURCE=ortools/linear_solver/samples/integer_programming_example.js
 
 .PHONY: test_javascript_sat_samples # Run all JavaScript Sat Samples (located in ortools/sat/samples)
-# XXX test_python_sat_samples: \
-# XXX  rpy_binpacking_problem_sat \
-# XXX  rpy_bool_or_sample_sat \
-# XXX  rpy_channeling_sample_sat \
-# XXX  rpy_cp_is_fun_sat \
-# XXX  rpy_earliness_tardiness_cost_sample_sat \
-# XXX  rpy_interval_sample_sat \
-# XXX  rpy_literal_sample_sat \
-# XXX  rpy_minimal_jobshop_sat \
-# XXX  rpy_no_overlap_sample_sat \
-# XXX  rpy_nurses_sat \
-# XXX  rpy_optional_interval_sample_sat \
-# XXX  rpy_rabbits_and_pheasants_sat \
-# XXX  rpy_ranking_sample_sat \
-# XXX  rpy_reified_sample_sat \
-# XXX  rpy_simple_sat_program \
-# XXX  rpy_search_for_all_solutions_sample_sat \
-# XXX  rpy_solve_and_print_intermediate_solutions_sample_sat \
-# XXX  rpy_solve_with_time_limit_sample_sat \
-# XXX  rpy_step_function_sample_sat \
-# XXX  rpy_stop_after_n_solutions_sample_sat
+test_javascript_sat_samples:
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/binpacking_problem_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/bool_or_sample_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/channeling_sample_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/cp_is_fun_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/earliness_tardiness_cost_sample_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/interval_sample_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/literal_sample_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/minimal_jobshop_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/no_overlap_sample_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/nurses_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/optional_interval_sample_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/rabbits_and_pheasants_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/ranking_sample_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/reified_sample_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/simple_sat_program
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/search_for_all_solutions_sample_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/solve_and_print_intermediate_solutions_sample_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/solve_with_time_limit_sample_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/step_function_sample_sat
+	# TODO $(MAKE) run SOURCE=ortools/sat/samples/stop_after_n_solutions_sample_sat
 
 .PHONY: check_javascript_pimpl
 check_javascript_pimpl: \
@@ -583,198 +582,185 @@ check_javascript_pimpl: \
  test_javascript_constraint_solver_samples \
  test_javascript_graph_samples \
  test_javascript_linear_solver_samples \
-# XXX  test_python_sat_samples \
-# XXX  \
-# XXX  rpy_stigler_diet
-# XXX # rpy_rabbits_pheasants_cp \
-# XXX # rpy_cryptarithmetic_cp \
-# XXX # rpy_cryptarithmetic_sat \
-# XXX # rpy_nqueens_cp \
-# XXX # rpy_nqueens_sat \
-# XXX # rpy_integer_programming \
-# XXX # rpy_max_flow \
-# XXX # rpy_min_cost_flow \
-# XXX # rpy_assignment \
-# XXX # rpy_nurses_cp \
-# XXX # rpy_job_shop_cp \
+ test_javascript_sat_samples
 
 .PHONY: test_javascript_tests # Run all Python Tests (located in examples/tests)
-test_javascript_tests: \
-# XXX  rpy_lp_test \
-# XXX  rpy_cp_model_test \
-# XXX  rpy_sorted_interval_list_test \
-# XXX  rpy_test_cp_api \
-# XXX  rpy_test_routing_api \
-# XXX  rpy_test_lp_api \
-# XXX  rpy_pywrapcp_test \
-# XXX  rpy_pywraplp_test \
-# XXX  rpy_pywraprouting_test
+test_javascript_tests:
+	# TODO $(MAKE) run SOURCE=examples/tests/lp_test.js
+	# TODO $(MAKE) run SOURCE=examples/tests/cp_model_test.js
+	# TODO $(MAKE) run SOURCE=examples/tests/sorted_interval_list_test.js
+	# TODO $(MAKE) run SOURCE=examples/tests/test_cp_api.js
+	# TODO $(MAKE) run SOURCE=examples/tests/test_routing_api.js
+	# TODO $(MAKE) run SOURCE=examples/tests/test_lp_api.js
+	# TODO $(MAKE) run SOURCE=examples/tests/pywrapcp_test.js
+	# TODO $(MAKE) run SOURCE=examples/tests/pywraplp_test.js
+	# TODO $(MAKE) run SOURCE=examples/tests/pywraprouting_test.js
 
 .PHONY: test_javascript_contrib # Run all Python Contrib (located in examples/python and examples/contrib)
- test_javascript_contrib: \
-# XXX  rpy_3_jugs_mip \
-# XXX  rpy_3_jugs_regular \
-# XXX  rpy_alldifferent_except_0 \
-# XXX  rpy_all_interval \
-# XXX  rpy_alphametic \
-# XXX  rpy_a_round_of_golf \
-# XXX  rpy_assignment6_mip \
-# XXX  rpy_assignment \
-# XXX  rpy_bacp \
-# XXX  rpy_blending \
-# XXX  rpy_broken_weights \
-# XXX  rpy_bus_schedule \
-# XXX  rpy_car \
-# XXX  rpy_check_dependencies \
-# XXX  rpy_circuit \
-# XXX  rpy_coins3 \
-# XXX  rpy_coins_grid_mip \
-# XXX  rpy_coloring_ip \
-# XXX  rpy_combinatorial_auction2 \
-# XXX  rpy_contiguity_regular \
-# XXX  rpy_costas_array \
-# XXX  rpy_covering_opl \
-# XXX  rpy_crew \
-# XXX  rpy_crossword2 \
-# XXX  rpy_crypta \
-# XXX  rpy_crypto \
-# XXX  rpy_curious_set_of_integers \
-# XXX  rpy_debruijn_binary \
-# XXX  rpy_diet1_b \
-# XXX  rpy_diet1_mip \
-# XXX  rpy_diet1 \
-# XXX  rpy_discrete_tomography \
-# XXX  rpy_divisible_by_9_through_1 \
-# XXX  rpy_dudeney \
-# XXX  rpy_einav_puzzle2 \
-# XXX  rpy_einav_puzzle \
-# XXX  rpy_eq10 \
-# XXX  rpy_eq20 \
-# XXX  rpy_fill_a_pix \
-# XXX  rpy_furniture_moving \
-# XXX  rpy_futoshiki \
-# XXX  rpy_game_theory_taha \
-# XXX  rpy_grocery \
-# XXX  rpy_just_forgotten \
-# XXX  rpy_kakuro \
-# XXX  rpy_kenken2 \
-# XXX  rpy_killer_sudoku \
-# XXX  rpy_knapsack_cp \
-# XXX  rpy_knapsack_mip \
-# XXX  rpy_labeled_dice \
-# XXX  rpy_langford \
-# XXX  rpy_least_diff \
-# XXX  rpy_least_square \
-# XXX  rpy_lectures \
-# XXX  rpy_magic_sequence_sat \
-# XXX  rpy_magic_square_and_cards \
-# XXX  rpy_magic_square_mip \
-# XXX  rpy_magic_square \
-# XXX  rpy_map \
-# XXX  rpy_marathon2 \
-# XXX  rpy_max_flow_taha \
-# XXX  rpy_max_flow_winston1 \
-# XXX  rpy_minesweeper \
-# XXX  rpy_mr_smith \
-# XXX  rpy_nonogram_default_search \
-# XXX  rpy_nonogram_regular \
-# XXX  rpy_nonogram_table2 \
-# XXX  rpy_nonogram_table \
-# XXX  rpy_nqueens2 \
-# XXX  rpy_nqueens3 \
-# XXX  rpy_nqueens \
-# XXX  rpy_nurse_rostering \
-# XXX  rpy_nurses_cp \
-# XXX  rpy_olympic \
-# XXX  rpy_organize_day \
-# XXX  rpy_pandigital_numbers \
-# XXX  rpy_photo_problem \
-# XXX  rpy_place_number_puzzle \
-# XXX  rpy_p_median \
-# XXX  rpy_post_office_problem2 \
-# XXX  rpy_production \
-# XXX  rpy_pyls_api \
-# XXX  rpy_quasigroup_completion \
-# XXX  rpy_regular \
-# XXX  rpy_regular_table2 \
-# XXX  rpy_regular_table \
-# XXX  rpy_rogo2 \
-# XXX  rpy_rostering_with_travel \
-# XXX  rpy_safe_cracking \
-# XXX  rpy_scheduling_speakers \
-# XXX  rpy_secret_santa2 \
-# XXX  rpy_send_more_money_any_base \
-# XXX  rpy_send_most_money \
-# XXX  rpy_seseman_b \
-# XXX  rpy_seseman \
-# XXX  rpy_set_covering2 \
-# XXX  rpy_set_covering3 \
-# XXX  rpy_set_covering4 \
-# XXX  rpy_set_covering_deployment \
-# XXX  rpy_set_covering \
-# XXX  rpy_set_covering_skiena \
-# XXX  rpy_set_partition \
-# XXX  rpy_sicherman_dice \
-# XXX  rpy_ski_assignment \
-# XXX  rpy_slitherlink \
-# XXX  rpy_stable_marriage \
-# XXX  rpy_steel_lns \
-# XXX  rpy_steel \
-# XXX  rpy_stigler \
-# XXX  rpy_strimko2 \
-# XXX  rpy_subset_sum \
-# XXX  rpy_survo_puzzle \
-# XXX  rpy_toNum \
-# XXX  rpy_traffic_lights \
-# XXX  rpy_volsay2 \
-# XXX  rpy_volsay3 \
-# XXX  rpy_volsay \
-# XXX  rpy_wedding_optimal_chart \
-# XXX  rpy_who_killed_agatha \
-# XXX  rpy_xkcd \
-# XXX  rpy_young_tableaux
-# XXX 	$(MAKE) run SOURCE=examples/contrib/coins_grid.py ARGS="5 2"
-# XXX 	$(MAKE) run SOURCE=examples/contrib/hidato.py ARGS="3 3"
-# XXX #	$(MAKE) rpy_cvrptw_plot # error: py3 failure, missing numpy.
-# XXX #	$(MAKE) rpy_nontransitive_dice # error: too long
-# XXX # warning: nurse_sat take 18s
-# XXX #	$(MAKE) rpy_school_scheduling_sat # error: too long
-# XXX #	$(MAKE) rpy_secret_santa # error: too long
-# XXX #	$(MAKE) rpy_word_square # Not working on window since it rely on /usr/share/dict/words
+ test_javascript_contrib:
+	# TODO $(MAKE) run SOURCE=examples/contrib/3_jugs_mip.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/3_jugs_regular.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/alldifferent_except_0.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/all_interval.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/alphametic.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/a_round_of_golf.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/assignment6_mip.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/assignment.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/bacp.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/blending.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/broken_weights.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/bus_schedule.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/car.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/check_dependencies.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/circuit.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/coins3.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/coins_grid_mip.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/coloring_ip.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/combinatorial_auction2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/contiguity_regular.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/costas_array.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/covering_opl.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/crew.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/crossword2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/crypta.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/crypto.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/curious_set_of_integers.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/debruijn_binary.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/diet1_b.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/diet1_mip.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/diet1.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/discrete_tomography.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/divisible_by_9_through_1.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/dudeney.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/einav_puzzle2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/einav_puzzle.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/eq10.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/eq20.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/fill_a_pix.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/furniture_moving.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/futoshiki.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/game_theory_taha.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/grocery.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/just_forgotten.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/kakuro.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/kenken2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/killer_sudoku.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/knapsack_cp.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/knapsack_mip.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/labeled_dice.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/langford.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/least_diff.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/least_square.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/lectures.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/magic_sequence_sat.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/magic_square_and_cards.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/magic_square_mip.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/magic_square.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/map.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/marathon2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/max_flow_taha.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/max_flow_winston1.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/minesweeper.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/mr_smith.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/nonogram_default_search.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/nonogram_regular.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/nonogram_table2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/nonogram_table.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/nqueens2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/nqueens3.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/nqueens.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/nurse_rostering.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/nurses_cp.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/olympic.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/organize_day.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/pandigital_numbers.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/photo_problem.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/place_number_puzzle.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/p_median.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/post_office_problem2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/production.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/pyls_api.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/quasigroup_completion.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/regular.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/regular_table2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/regular_table.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/rogo2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/rostering_with_travel.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/safe_cracking.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/scheduling_speakers.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/secret_santa2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/send_more_money_any_base.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/send_most_money.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/seseman_b.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/seseman.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/set_covering2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/set_covering3.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/set_covering4.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/set_covering_deployment.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/set_covering.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/set_covering_skiena.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/set_partition.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/sicherman_dice.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/ski_assignment.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/slitherlink.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/stable_marriage.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/steel_lns.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/steel.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/stigler.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/strimko2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/subset_sum.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/survo_puzzle.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/toNum.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/traffic_lights.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/volsay2.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/volsay3.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/volsay.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/wedding_optimal_chart.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/who_killed_agatha.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/xkcd.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/young_tableaux.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/coins_grid.py ARGS="5 2"
+	# TODO $(MAKE) run SOURCE=examples/contrib/hidato.py ARGS="3 3"
+	# TODO $(MAKE) run SOURCE=examples/python/cvrptw_plot.js
+	# TODO $(MAKE) run SOURCE=examples/contrib/nontransitive_dice.js # error: too long
+	# warning: nurse_sat take 18s
+	# TODO $(MAKE) run SOURCE=examples/contrib/school_scheduling_sat.js # error: too long
+	# TODO $(MAKE) run SOURCE=examples/contrib/secret_santa/.js # error: too long
+	# TODO $(MAKE) run SOURCE=examples/contrib/word_square.js # Not working on window since it rely on /usr/share/dict/words
 
 .PHONY: test_javascript_javascript # Build and Run all JavaScript Examples (located in ortools/examples/python)
 test_javascript_javascript:
-	# $(MAKE) run SOURCE= XXX rpy_appointments
-	# $(MAKE) run SOURCE= XXX rpy_assignment_sat
-	# $(MAKE) run SOURCE= XXX rpy_assignment_with_constraints_sat
-	# $(MAKE) run SOURCE= XXX rpy_balance_group_sat
-	# $(MAKE) run SOURCE= XXX rpy_chemical_balance_lp
-	# $(MAKE) run SOURCE= XXX rpy_chemical_balance_sat
-	# $(MAKE) run SOURCE= XXX rpy_flexible_job_shop_sat
-	# $(MAKE) run SOURCE= XXX rpy_gate_scheduling_sat
-	# $(MAKE) run SOURCE= XXX rpy_golomb8
-	# $(MAKE) run SOURCE= XXX rpy_hidato_sat
-	# $(MAKE) run SOURCE= XXX rpy_integer_programming
-	# $(MAKE) run SOURCE= XXX rpy_jobshop_ft06_distance_sat
-	# $(MAKE) run SOURCE= XXX rpy_jobshop_ft06_sat
-	# $(MAKE) run SOURCE= XXX rpy_jobshop_with_maintenance_sat
-	# $(MAKE) run SOURCE= XXX rpy_linear_assignment_api
+	# TODO $(MAKE) run SOURCE=examples/javascript/appointments.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/assignment_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/assignment_with_constraints_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/balance_group_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/chemical_balance_lp.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/chemical_balance_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/flexible_job_shop_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/gate_scheduling_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/golomb8.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/hidato_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/integer_programming.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/jobshop_ft06_distance_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/jobshop_ft06_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/jobshop_with_maintenance_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/linear_assignment_api.js
 	$(MAKE) run SOURCE=examples/javascript/linear-programming.js
-	# $(MAKE) run SOURCE= XXX rpy_magic_sequence_distribute
-	# $(MAKE) run SOURCE= XXX rpy_nqueens_sat
-	# $(MAKE) run SOURCE= XXX rpy_pyflow_example
-	# $(MAKE) run SOURCE= XXX rpy_reallocate_sat
-	# $(MAKE) run SOURCE= XXX rpy_rcpsp_sat
-	# $(MAKE) run SOURCE= XXX rpy_single_machine_scheduling_with_setup_release_due_dates_sat
-	# $(MAKE) run SOURCE= XXX rpy_steel_mill_slab_sat
-	# $(MAKE) run SOURCE= XXX rpy_stigler_diet
-	# $(MAKE) run SOURCE= XXX rpy_sudoku_sat
-	# $(MAKE) run SOURCE= XXX rpy_tasks_and_workers_assignment_sat
-	# $(MAKE) run SOURCE= XXX rpy_transit_time
-	# $(MAKE) run SOURCE= XXX rpy_vendor_scheduling_sat
-	# $(MAKE) run SOURCE= XXX rpy_wedding_optimal_chart_sat
-	# $(MAKE) run SOURCE= XXX rpy_worker_schedule_sat
-	# $(MAKE) run SOURCE= XXX rpy_zebra_sat
+	# TODO $(MAKE) run SOURCE=examples/javascript/magic_sequence_distribute.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/nqueens_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/pyflow_example.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/reallocate_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/rcpsp_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/single_machine_scheduling_with_setup_release_due_dates_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/steel_mill_slab_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/stigler_diet.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/sudoku_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/tasks_and_workers_assignment_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/transit_time.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/vendor_scheduling_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/wedding_optimal_chart_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/worker_schedule_sat.js
+	# TODO $(MAKE) run SOURCE=examples/javascript/zebra_sat.js
 # XXX 	$(MAKE) run SOURCE=examples/python/shift_scheduling_sat.py ARGS="--params max_time_in_seconds:10.0"
 
 
